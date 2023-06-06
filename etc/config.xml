@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <gfnl_pixqrcode>
+                <active>1</active>
+                <payment_action>order</payment_action>
+                <model>GFNL\PixQrCode\Model\Method\PixQrCode</model>
+                <title>Pix</title>
+            </gfnl_pixqrcode>
+        </payment>
+    </default>
+</config>
