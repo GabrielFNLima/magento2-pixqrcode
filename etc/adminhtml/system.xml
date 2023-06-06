@@ -15,6 +15,61 @@
                        showInStore="1">
                     <label>Title</label>
                 </field>
+                <field id="comment" translate="label comment" type="textarea" sortOrder="3" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Comment</label>
+                    <comment>Comment that will appear at checkout for the customer.</comment>
+                </field>
+                <field id="send_proof_payment" translate="label comment" type="text" sortOrder="4" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Email to send the proof of payment</label>
+                    <validate>required-entry validate-email</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="pix_key" translate="label comment" type="text" sortOrder="5" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Pix Key</label>
+                    <comment>
+                        <![CDATA[
+                            Types of accepted Pix keys:<ul><li>Email:<br>Example: fulano_da_silva.recebedor@example.com</li><li>CPF or CNPJ:<br>Example: CPF: 12345678900 or CNPJ: 00038166000105</li><li>Mobile phone number:<br>Example: +5561912345678<br>+55: country code.<br>61: territory or state code.<br>912345678: mobile phone number.<br></li><li>Random key:<br>Example: 123e4567-e12b-12d1-a456-426655440000</li></ul>
+                        ]]>
+                    </comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="merchantName" translate="label comment" type="text" sortOrder="6" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Merchant Name</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="merchantCity" translate="label comment" type="text" sortOrder="7" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Merchant City</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="description" translate="label" type="textarea" sortOrder="8" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Payment Description</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

@@ -8,6 +8,7 @@
                 <payment_action>order</payment_action>
                 <model>GFNL\PixQrCode\Model\Method\PixQrCode</model>
                 <title>Pix</title>
+                <comment>The QR code for payment will be generated once the purchase is completed.</comment>
             </gfnl_pixqrcode>
         </payment>
     </default>
