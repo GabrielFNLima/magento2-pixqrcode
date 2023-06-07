@@ -18,9 +18,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * Returns Store config value
      *
      * @param string $scopeConfigPath
-     * @return string/bool
+     * @return string|null
      */
-    public function getStoreConfigValue(string $scopeConfigPath): string
+    public function getStoreConfigValue(string $scopeConfigPath): ?string
     {
         return $this->scopeConfig->getValue($scopeConfigPath, ScopeInterface::SCOPE_STORE);
     }
