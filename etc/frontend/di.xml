@@ -10,4 +10,9 @@
             </argument>
         </arguments>
     </type>
+    <type name="GFNL\PixQrCode\Block\Success">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
 </config>

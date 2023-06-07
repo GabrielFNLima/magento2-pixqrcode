@@ -1,18 +1,19 @@
 {
-  "name": "gfnl/magento2-pixqrcode",
-  "version": "1.0.0",
-  "description": "N/A",
-  "type": "magento2-module",
-  "require": {
-    "magento/framework": "*",
-    "magento/module-checkout": "*"
-  },
-  "autoload": {
-    "files": [
-      "registration.php"
-    ],
-    "psr-4": {
-      "GFNL\\PixQrCode\\": ""
+    "name": "gfnl/magento2-pixqrcode",
+    "version": "1.0.0",
+    "description": "N/A",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "*",
+        "magento/module-checkout": "*",
+        "chillerlan/php-qrcode": "^4.3"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "GFNL\\PixQrCode\\": ""
+        }
     }
-  }
 }

@@ -1,0 +1,51 @@
+<?php
+/**
+ * @var $block \GFNL\PixQrCode\Block\Success
+ * @var $order \Magento\Sales\Model\Order
+ */
+
+$order = $block->getOrder();
+$paymentInfo = $order->getPayment()->getAdditionalInformation();
+
+$qrcodepix = $paymentInfo['qrcode'];
+$payloadPix = $paymentInfo['payload_pix'];
+?>
+<div class="gfnl_pix">
+    <img src="<?= $qrcodepix ?>" alt="qrcode para pagamento pix"/>
+    <h2>Escaneie o qrcode com seu celular ou copie e cola o código </h2>
+    <span>
+        Abra o app do seu banco no celular, escolha Pix e aponte a câmera para o qrcode.
+    </span>
+    <br>
+
+    <div class="linhes">
+        <h2>Linha digitável:</h2>
+        <span id="chavePix"><?= $payloadPix ?></span>
+        <br>
+        <span id="message"></span>
+        <div>
+            <button class="action-primary" id='clickToCopy'>Copiar</button>
+        </div>
+    </div>
+    <div class="instrucoes">
+        <h2>Instruções após pagamento realizado</h2>
+        <p>Após efetuar o pagamento, nos encaminhe seu comprovante para o e-mail: <a href="mailto:<?=
+            $block->getEmailForConfirmation() ?>&subject=<?= $order->getIncrementId() ?>"><?= $block->getEmailForConfirmation() ?></a>
+            junto com o seu
+            número do pedido: #<?= $order->getIncrementId() ?>.
+        </p>
+    </div>
+</div>
+
+<script>
+    const clicktoCopy = document.querySelector("#clickToCopy");
+
+    clicktoCopy.addEventListener('click', () => {
+        const chavePix = document.querySelector('#chavePix');
+        navigator.clipboard.writeText(chavePix.innerHTML);
+        document.querySelector('#message').innerHTML = "Chave pix copiada com sucesso!";
+        setTimeout(function () {
+            document.querySelector('#message').innerHTML = "";
+        }, 2000)
+    });
+</script>

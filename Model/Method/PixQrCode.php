@@ -2,6 +2,7 @@
 
 namespace GFNL\PixQrCode\Model\Method;
 
+use chillerlan\QRCode\QRCode;
 use GFNL\PixQrCode\Helper\Data;
 use GFNL\PixQrCode\Model\Payload;
 use Magento\Directory\Helper\Data as DirectoryHelper;
@@ -34,6 +35,7 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
         \Magento\Payment\Model\Method\Logger                    $logger,
         Data                                                    $helper,
         Payload                                                 $payload,
+        QRCode                                                  $qrCode,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb           $resourceCollection = null,
         array                                                   $data = [],
@@ -42,6 +44,8 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
     {
         $this->helper = $helper;
         $this->payload = $payload;
+        $this->qrCode = $qrCode;
+
         parent::__construct($context, $registry, $extensionFactory, $customAttributeFactory, $paymentData, $scopeConfig, $logger, $resource, $resourceCollection, $data, $directory);
     }
 
@@ -64,8 +68,8 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
             ->setMechantName($this->getMerchantName())
             ->setDesciption($this->getDescription())
             ->getPayload();
-
-        $additional = ['payload_pix' => (string)$payloadPix];
+        $qrcode = $this->generateQrCodeImage($payloadPix);
+        $additional = ['payload_pix' => (string)$payloadPix, 'qrcode' => (string)$qrcode];
         $payment->setAdditionalInformation($additional);
 
         return $this;
@@ -111,5 +115,10 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
     {
         $description = $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/description');
         return $description !== null ? $description : '';
+    }
+
+    public function generateQrCodeImage($qrcode)
+    {
+        return $this->qrCode->render($qrcode);
     }
 }
