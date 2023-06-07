@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @var $block \GFNL\PixQrCode\Block\Info\PixQrCode
+ */
+$paymentTitle = $block->getMethod()->getConfigData('title', $block->getOrder()->getStoreId());
+?>
+<?= $block->escapeHtml($paymentTitle) ?>
+<?php if ($block->getInfo()->getAdditionalInformation()) : ?>
+    <?php if ($block->getPayloadPix()) : ?>
+        <br/><?= $block->escapeHtml(__('Digitable line: %1', $block->getPayloadPix())) ?>
+    <?php endif; ?>
+<?php endif; ?>

@@ -12,7 +12,17 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
 {
     const CODE = 'gfnl_pixqrcode';
 
+    /**
+     * Payment method code
+     *
+     * @var string
+     */
     protected $_code = self::CODE;
+
+    /**
+     * @var string
+     */
+    protected $_infoBlockType = \GFNL\PixQrCode\Block\Info\PixQrCode::class;
 
     public function __construct(
         \Magento\Framework\Model\Context                        $context,
@@ -54,7 +64,9 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
             ->setMechantName($this->getMerchantName())
             ->setDesciption($this->getDescription())
             ->getPayload();
-        $order->setPayloadPix($payloadPix);
+
+        $additional = ['payload_pix' => (string)$payloadPix];
+        $payment->setAdditionalInformation($additional);
 
         return $this;
     }
