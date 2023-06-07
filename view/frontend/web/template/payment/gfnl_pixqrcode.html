@@ -10,6 +10,13 @@
         <!-- ko foreach: getRegion('messages') -->
         <!-- ko template: getTemplate() --><!-- /ko -->
         <!--/ko-->
+        <!-- ko if: getComment() -->
+        <dl class="items">
+            <dd class="content">
+                <strong data-bind="text: getComment()"></strong>
+            </dd>
+        </dl>
+        <!-- /ko -->
         <div class="payment-method-billing-address">
             <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
             <!-- ko template: getTemplate() --><!-- /ko -->

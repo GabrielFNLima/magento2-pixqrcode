@@ -24,7 +24,7 @@
                                                                     <item name="methods" xsi:type="array">
                                                                         <item name="gfnl_pixqrcode" xsi:type="array">
                                                                             <item name="isBillingAddressRequired"
-                                                                                  xsi:type="boolean">true
+                                                                                  xsi:type="boolean">false
                                                                             </item>
                                                                         </item>
                                                                     </item>
