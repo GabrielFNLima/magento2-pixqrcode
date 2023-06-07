@@ -2,6 +2,7 @@
 
 namespace GFNL\PixQrCode\Block\Info;
 
+use GFNL\PixQrCode\Helper\Data;
 use Magento\Framework\View\Element\Template;
 
 class PixQrCode extends \Magento\Payment\Block\Info
@@ -13,11 +14,13 @@ class PixQrCode extends \Magento\Payment\Block\Info
 
     public function __construct(
         \Magento\Checkout\Model\Session $checkoutSession,
+        Data                            $helper,
         Template\Context                $context,
         array                           $data = []
     )
     {
         $this->_checkoutSession = $checkoutSession;
+        $this->helper = $helper;
         parent::__construct($context, $data);
     }
 
@@ -40,5 +43,10 @@ class PixQrCode extends \Magento\Payment\Block\Info
     {
         $info = $this->getPaymentInfo();
         return $info['payload_pix'] ?? '';
+    }
+
+    public function getEmailForConfirmation()
+    {
+        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/send_proof_payment');
     }
 }

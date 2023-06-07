@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @var $block \GFNL\PixQrCode\Block\Info\PixQrCode
+ */
+$order = $block->getOrder();
+$paymentTitle = $block->getMethod()->getConfigData('title', $block->getOrder()->getStoreId());
+$qrcodepix = $block->getPaymentInfo()['qrcode'];
+?>
+<?= $block->escapeHtml($paymentTitle) ?>
+<?php if ($block->getInfo()->getAdditionalInformation()) : ?>
+    <?php if ($qrcodepix) : ?>
+        <img src="<?= $qrcodepix ?>" alt="qrcode para pagamento pix"/>
+    <?php endif; ?>
+    <?php if ($block->getPayloadPix()) : ?>
+        <button class="action-primary" id='clickToCopy'>Copiar linha digitavel</button>
+        <br/>
+        <span id="message"></span>
+    <?php endif; ?>
+    <br/>
+    <p>Após efetuar o pagamento, nos encaminhe seu comprovante para o e-mail: <a href="mailto:<?=
+        $block->getEmailForConfirmation() ?>&subject=<?= $order->getIncrementId() ?>"><?= $block->getEmailForConfirmation() ?></a>
+        junto com o seu
+        número do pedido: #<?= $order->getIncrementId() ?>.
+    </p>
+
+    <script>
+        const clicktoCopy = document.querySelector("#clickToCopy");
+
+        clicktoCopy.addEventListener('click', () => {
+            const chavePix = "<?=$block->getPayloadPix()?>"
+            navigator.clipboard.writeText(chavePix);
+            document.querySelector('#message').innerHTML = "Chave pix copiada com sucesso!";
+            setTimeout(function () {
+                document.querySelector('#message').innerHTML = "";
+            }, 2000)
+        });
+    </script>
+
+<?php endif; ?>
