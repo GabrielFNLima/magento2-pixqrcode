@@ -7,8 +7,8 @@
 $order = $block->getOrder();
 $paymentInfo = $order->getPayment()->getAdditionalInformation();
 
-$qrcodepix = $paymentInfo['qrcode'];
-$payloadPix = $paymentInfo['payload_pix'];
+$qrcodepix = $paymentInfo['qrcode'] ?? '';
+$payloadPix = $paymentInfo['payload_pix'] ?? '';
 ?>
 <?php if ($order->getPayment()->getMethod() === 'gfnl_pixqrcode'): ?>
     <div class="gfnl_pix">
