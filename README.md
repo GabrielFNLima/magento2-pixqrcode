@@ -88,3 +88,7 @@ Para acessar as configurações do meio de pagamento Pix no Magento, vai em
 ***Lojas > Configuração > Vendas > Formas de pagamento > Pix***
 
 ![config.png](doc/images/config.png)
+
+
+## English Doc
+- [README (en)](https://github.com/GabrielFNLima/magento2-pixqrcode/wiki/README-(en))
