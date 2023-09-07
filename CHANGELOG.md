@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.1 (2023-09-07)
+
+
+### Bug Fixes
+
+* **success-page:** handle undefined array key error ([fd2284d](https://github.com/GabrielFNLima/magento2-pixqrcode/commit/fd2284d2bd5bdf18ac0684d7a8bf16288a48e22d)), closes [#1](https://github.com/GabrielFNLima/magento2-pixqrcode/issues/1)
+
+
 ## 1.0.0 (2023-06-12)
 
 
