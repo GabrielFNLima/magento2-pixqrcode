@@ -1,0 +1,170 @@
+//
+//  Variables
+//  _____________________________________________
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .pix-payment.checkout {
+        max-width: 30rem;
+        margin: 3rem auto 0;
+
+        .payment-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+
+            .qrcode {
+                span {
+                    display: block;
+
+                    font-size: 1.6rem;
+                }
+
+                img {
+                    width: 25rem;
+                    height: 25rem;
+                }
+            }
+
+            .separate-text {
+                text-align: center;
+
+                font-size: 1.8rem;
+                font-weight: bold;
+            }
+
+            .pixcode {
+                .title {
+                    display: inline-block;
+
+                    font-size: 1.6rem;
+                    padding: 0 2.5rem;
+                }
+
+                .pix-code {
+                    height: 115px;
+                    border-radius: 0.8rem;
+
+                    margin: 2.5rem 0;
+                    padding: 10px 1.3rem 0;
+                    background: #E3E3E3;
+
+
+                    textarea {
+                        max-height: 115px;
+                        min-height: 115px;
+                        width: 100% !important;
+
+                        background: transparent;
+                        border: none;
+
+                        padding: 0;
+
+                        font-size: 1.3rem;
+                        outline: none;
+                        color: #575757;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+
+                        &::-webkit-resizer {
+                            display: none;
+                        }
+                    }
+                }
+
+                .action-primary {
+                    width: 100%;
+                    height: 3.6rem;
+                }
+
+                .message {
+                }
+            }
+        }
+
+        .separate-bar {
+            margin: 2.5rem 0;
+            height: 3px;
+
+            border: none;
+            background: #ccc;
+        }
+
+        .instruction {
+            text-align: center;
+
+            span {
+                font-size: 2rem;
+                display: inline-block;
+
+                margin: 0 0 1.6rem 0;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: 768px) {
+        .pix-payment.checkout {
+            .payment-info {
+                flex-direction: row;
+                width: 100%;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 0;
+
+                .pixcode {
+                    width: 32rem;
+
+                    .title {
+                        font-size: 1.8rem;
+                        padding: 0 1rem;
+                    }
+
+                    .pix-code {
+                        textarea {
+                            text-align: justify;
+                        }
+                    }
+                }
+
+                .separate-text {
+                    margin: 0 4.5rem 0 2.5rem;
+                    font-size: 2.5rem;
+                }
+
+                .qrcode {
+                    span {
+                        font-size: 1.8rem;
+                    }
+                }
+            }
+
+            max-width: 76.8rem;
+            margin-left: 0;
+
+            .instruction {
+                width: 38.8rem;
+                margin: auto;
+
+                span {
+                    font-size: 2.5rem;
+                }
+
+                p {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+}

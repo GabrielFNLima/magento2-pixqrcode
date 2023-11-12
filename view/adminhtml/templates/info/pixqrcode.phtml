@@ -8,6 +8,11 @@ $paymentTitle = $block->getMethod()->getConfigData('title', $block->getOrder()->
 <?= $block->escapeHtml($paymentTitle) ?>
 <?php if ($block->getInfo()->getAdditionalInformation()) : ?>
     <?php if ($block->getPayloadPix()) : ?>
-        <br/><?= $block->escapeHtml(__('Digitable line: %1', $block->getPayloadPix())) ?>
+        <div class="pix-payment">
+            <span><?= __("Copie o código Pix abaixo e cole em seu app  de pagamento.") ?></span>
+            <div class="pix-code">
+                <span><?= $block->getPayloadPix() ?></span>
+            </div>
+        </div>
     <?php endif; ?>
 <?php endif; ?>

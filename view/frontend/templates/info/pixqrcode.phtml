@@ -9,13 +9,15 @@ $paymentTitle = $block->getMethod()->getConfigData('title', $block->getOrder()->
 <?= $block->escapeHtml($paymentTitle) ?>
 <?php if ($block->getInfo()->getAdditionalInformation()) : ?>
     <?php if ($block->getPayloadPix()) : ?>
-        <br/>
-        <p><?= $block->escapeHtml(__('Digitable line: %1', $block->getPayloadPix())) ?></p>
-        <br/>
-        <p>Após efetuar o pagamento, nos encaminhe seu comprovante para o e-mail: <a href="mailto:<?=
-            $block->getEmailForConfirmation() ?>&subject=<?= $order->getIncrementId() ?>"><?= $block->getEmailForConfirmation() ?></a>
-            junto com o seu
-            número do pedido: #<?= $order->getIncrementId() ?>.
-        </p>
+        <div class="pix-payment order-view">
+            <span class="title"><?= __("Copie o código Pix abaixo e cole em seu app  de pagamento.") ?></span>
+            <div class="pix-code">
+                <span><?= $block->getPayloadPix() ?></span>
+            </div>
+            <div class="instruction">
+                <span><?= __("Instruções após pagamento") ?></span>
+                <p><?= __("Após efetuar o pagamento, por favor, nos envie o comprovante para o e-mail: <a href='mailto:%1&subject=Comporvante de pagamento para o pedido: #%2'>%1</a> junto com seu número de pedido: #%2", $block->getEmailForConfirmation(), $order->getIncrementId()) ?></p>
+            </div>
+        </div>
     <?php endif; ?>
 <?php endif; ?>
