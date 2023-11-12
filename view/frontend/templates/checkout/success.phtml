@@ -7,31 +7,31 @@
 $order = $block->getOrder();
 $paymentInfo = $order->getPayment()->getAdditionalInformation();
 
-$qrcodepix = $paymentInfo['qrcode'];
-$payloadPix = $paymentInfo['payload_pix'];
+$qrcodepix = $paymentInfo['qrcode'] ?? '';
+$payloadPix = $paymentInfo['payload_pix']??'';
 ?>
 <?php if ($order->getPayment()->getMethod() === 'gfnl_pixqrcode'): ?>
     <div class="pix-payment checkout">
-        <div>
-            <div class="qrcode-section">
-                <span><?= __("Escanei o Qr Code com seu celular") ?></span>
+        <div class="payment-info">
+            <div class="qrcode">
+                <span><?= __('Escanei o Qr Code com seu celular') ?></span>
                 <img src="<?= $qrcodepix ?>" alt="qrcode para pagamento pix"/>
             </div>
-            <span class="separete-text">ou</span>
-            <div class="pxicode-section">
-                <span class="title"><?= __("Copie o código Pix abaixo e cole em seu app  de pagamento.") ?></span>
+            <span class="separate-text">ou</span>
+            <div class="pixcode">
+                <span class="title"><?= __('Copie o código Pix abaixo e cole em seu app de pagamento.') ?></span>
                 <div class="pix-code">
-                    <span><?= $payloadPix ?></span>
+                    <textarea readonly><?= $payloadPix ?></textarea>
                 </div>
                 <button id="clickToCopy" class="action-primary">
-                    <?= __("Copiar Código Pix") ?>
+                    <?= __('Copiar Código Pix') ?>
                 </button>
                 <span id="message"></span>
             </div>
         </div>
-        <div class="separete-bar"></div>
+        <div class="separate-bar"></div>
         <div class="instruction">
-            <span><?= __("Instruções após pagamento") ?></span>
+            <span><?= __('Instruções após pagamento') ?></span>
             <p><?= __("Após efetuar o pagamento, por favor, nos envie o comprovante para o e-mail: <a href='mailto:%1&subject=Comporvante de pagamento para o pedido: #%2'>%1</a> junto com seu número de pedido: #%2", $block->getEmailForConfirmation(), $order->getIncrementId()) ?></p>
         </div>
     </div>
