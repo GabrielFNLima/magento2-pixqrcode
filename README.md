@@ -1,5 +1,8 @@
 # Pix QR Code
 
+##### english README
+- [README (en)](https://github.com/GabrielFNLima/magento2-pixqrcode/wiki/README-(en))
+
 Este módulo é um meio de pagamento que gerar um QR Code estático com o valor do pedido para o cliente ao
 finalizar a compra.
 
