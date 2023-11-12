@@ -36,6 +36,7 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
         Data                                                    $helper,
         Payload                                                 $payload,
         QRCode                                                  $qrCode,
+        \Psr\Log\LoggerInterface                                $log,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb           $resourceCollection = null,
         array                                                   $data = [],
@@ -45,6 +46,7 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
         $this->helper = $helper;
         $this->payload = $payload;
         $this->qrCode = $qrCode;
+        $this->log = $log;
 
         parent::__construct($context, $registry, $extensionFactory, $customAttributeFactory, $paymentData, $scopeConfig, $logger, $resource, $resourceCollection, $data, $directory);
     }
@@ -86,7 +88,12 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
      */
     public function getChavePix()
     {
-        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/pix_key');
+        $chavePix = $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/pix_key');
+        if (!$chavePix) {
+            $this->log->critical('GFNL_PixQrcode', ['exception' => 'A chave Pix da loja não pôde ser encontrada. Por favor, verifique as configurações do meio de pagamento.']);
+            throw new \Magento\Framework\Exception\LocalizedException(__("An error occurred in your payment, Please contact the store."));
+        }
+        return $chavePix;
     }
 
     /**
@@ -95,7 +102,12 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
      */
     public function getMerchantCity()
     {
-        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/merchantCity');
+        $merchantCity = $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/merchantCity');
+        if (!$merchantCity) {
+            $this->log->critical('GFNL_PixQrcode', ['exception' => 'A cidade do titular da conta Pix não pôde ser encontrada. Por favor, verifique as configurações do meio de pagamento.']);
+            throw new \Magento\Framework\Exception\LocalizedException(__("An error occurred in your payment, Please contact the store."));
+        }
+        return $merchantCity;
     }
 
     /**
@@ -104,7 +116,12 @@ class PixQrCode extends \Magento\Payment\Model\Method\AbstractMethod
      */
     public function getMerchantName()
     {
-        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/merchantName');
+        $merchantName = $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/merchantName');
+        if (!$merchantName) {
+            $this->log->critical('GFNL_PixQrcode', ['exception' => __("O nome do titular da conta Pix não pôde ser encontrado. Por favor, verifique as configurações do meio de pagamento.")]);
+            throw new \Magento\Framework\Exception\LocalizedException(__("An error occurred in your payment, Please contact the store."));
+        }
+        return $merchantName;
     }
 
     /**
