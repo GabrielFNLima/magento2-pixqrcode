@@ -21,13 +21,35 @@
                     <label>Comment</label>
                     <comment>Comment that will appear at checkout for the customer.</comment>
                 </field>
-                <field id="send_proof_payment" translate="label comment" type="text" sortOrder="4" showInDefault="1"
+                <field id="type_proof_payment" translate="label" type="select" sortOrder="4" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Select Type of receive for proof of the payment</label>
+                    <source_model>GFNL\PixQrCode\Model\Adminhtml\System\Config\Source\TypeProofPayment</source_model>
+                    <validate>validate-select</validate>
+                </field>
+                <field id="send_proof_payment_to_email" translate="label comment" type="text" sortOrder="5"
+                       showInDefault="1"
                        showInWebsite="1"
                        showInStore="1">
-                    <label>Email to send the proof of payment</label>
+                    <label>E-mail</label>
                     <validate>required-entry validate-email</validate>
                     <depends>
-                        <field id="active">1</field>
+                        <field id="type_proof_payment">by_email</field>
+                    </depends>
+                </field>
+                <field id="send_proof_payment_to_whatsapp_number" translate="label comment" type="text" sortOrder="5"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>WhatsApp Number</label>
+                    <comment>
+                        <![CDATA[
+                            exemplo: 5561912345678<br>55: código do país.<br>61: código do território ou estado.<br>912345678: número do telefone celular.
+                        ]]>
+                    </comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="type_proof_payment">by_whatsapp</field>
                     </depends>
                 </field>
                 <field id="pix_key" translate="label comment" type="text" sortOrder="5" showInDefault="1"

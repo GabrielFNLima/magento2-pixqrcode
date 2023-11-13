@@ -32,7 +32,16 @@ $payloadPix = $paymentInfo['payload_pix'] ?? '';
         <div class="separate-bar"></div>
         <div class="instruction">
             <span><?= __('Instruções após pagamento') ?></span>
-            <p><?= __("Após efetuar o pagamento, por favor, nos envie o comprovante para o e-mail: <a href='mailto:%1&subject=Comporvante de pagamento para o pedido: #%2'>%1</a> junto com seu número de pedido: #%2", $block->getEmailForConfirmation(), $order->getIncrementId()) ?></p>
+            <?php if ($block->getTypeOfProofPayment() === 'by_email'): ?>
+                <p>
+                    <?= __("Após efetuar o pagamento, por favor, nos envie o comprovante para o e-mail: <a href='mailto:%1&subject=Comporvante de pagamento para o pedido: #%2'>%1</a> junto com seu número de pedido: #%2", $block->getEmailForConfirmation(), $order->getIncrementId()) ?>
+                </p>
+            <?php endif; ?>
+            <?php if ($block->getTypeOfProofPayment() === 'by_whatsapp'): ?>
+                <p>
+                    <?= __("Após efetuar o pagamento, por favor, nos envie o comprovante pelo número de WhatsApp <a href='https://api.whatsapp.com/send?phone=%1&text=Segue o comprovante para o pedido: %2' target='_blank'>%1</a>.", $block->getWhastappNumber(), $order->getIncrementId()) ?>
+                </p>
+            <?php endif; ?>
         </div>
     </div>
 

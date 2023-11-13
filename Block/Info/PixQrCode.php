@@ -45,8 +45,18 @@ class PixQrCode extends \Magento\Payment\Block\Info
         return $info['payload_pix'] ?? '';
     }
 
+    public function getTypeOfProofPayment()
+    {
+        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/type_proof_payment');
+    }
+
     public function getEmailForConfirmation()
     {
-        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/send_proof_payment');
+        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/send_proof_payment_to_email');
+    }
+
+    public function getWhastappNumber()
+    {
+        return $this->helper->getStoreConfigValue('payment/gfnl_pixqrcode/send_proof_payment_to_whatsapp_number');
     }
 }
