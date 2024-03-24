@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/GabrielFNLima/magento2-pixqrcode/compare/v1.0.1...v1.1.0) (2024-03-24)
+
+
+### Features
+
+* Improve structure of payment display on checkout success and order views ([36867d7](https://github.com/GabrielFNLima/magento2-pixqrcode/commit/36867d77a706a28b76ba592a52994817c050fdb3))
+* **logging:** add error handling for incorrect configuration ([dd34aa4](https://github.com/GabrielFNLima/magento2-pixqrcode/commit/dd34aa406262d2d981784fc935589b0e422ae650))
+* **payment:** introduce new type of receive for proof of the payment via WhatsApp ([5b8eb80](https://github.com/GabrielFNLima/magento2-pixqrcode/commit/5b8eb8044ec623fb039f25182df8b8633996b0c5))
+* **pwa-studio:** add PWA Studio integration for Pix QR Code ([6443207](https://github.com/GabrielFNLima/magento2-pixqrcode/commit/64432073b94e0c6f4e5296c03e477938b34a7736))
+* **style-structure:** Adding a new style for the pix display on checkout success ([aaf3e32](https://github.com/GabrielFNLima/magento2-pixqrcode/commit/aaf3e321b45f70897ba4be84c3590d9d2cbe90ef))
+
 ### 1.0.1 (2023-09-07)
 
 
