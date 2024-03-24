@@ -1,6 +1,6 @@
 {
     "name": "gfnl/magento2-pixqrcode",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "O módulo Pix Qrcode é uma extensão para o Magento que adiciona suporte ao Pix QR Code Estático como uma opção de pagamento em sua loja virtual.",
     "type": "magento2-module",
     "require": {
