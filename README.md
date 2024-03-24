@@ -1,4 +1,5 @@
 # Pix QR Code
+[<img alt="PWA STUDIO READY" src="https://img.shields.io/badge/PWA%20STUDIO-READY-purple">](https://github.com/GabrielFNLima/pwastudio-magento2-pixqrcode)
 
 ##### english README
 - [README (en)](https://github.com/GabrielFNLima/magento2-pixqrcode/wiki/README-(en))
@@ -84,6 +85,11 @@ bin/magento module:enable GFNL_PixQrCode
 ```bash
 bin/magento setup:upgrade
 ```
+
+## PWA Studio
+
+Esse módulo possui uma extensão para o PWA Studio (Venia). Para saber mais sobre como instalar, acesse o repositório [neste link](https://github.com/GabrielFNLima/pwastudio-magento2-pixqrcode).
+
 
 ## Configuração
 
