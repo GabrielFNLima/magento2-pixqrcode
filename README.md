@@ -47,7 +47,7 @@ O módulo possui uma dependência com o pacote [chillerlan/php-qrcode](https://g
 Para adicionar esse pacote ao Magento, basta executar o seguinte comando:
 
 ```bash
-composer require chillerlan/php-qrcode 
+composer require chillerlan/php-qrcode:4.4.1
 ```
 
 Certifique-se de que você esteja executando o comando na raiz do seu projeto Magento.
